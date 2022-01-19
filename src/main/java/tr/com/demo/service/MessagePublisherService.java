@@ -21,25 +21,58 @@ public class MessagePublisherService implements Publisher {
 		this.kafkaTemplate = kafkaTemplate;
 	}
 
-	
+	@Override
+	public <T, K> void publish(String topicName, String key, T data) {
+		this.doPublish(topicName, key, data);
+	}
+
 	/**
 	 * 
 	 */
 	@Override
 	public <T> void publish(String topicName, T data) {
-		doPublish(topicName, data);
+		publish(topicName,null, data);
 	}
-	
+
 	@Override
 	public <T> void publish(T data) {
-		doPublish(KafkaConstants.DEFAULT_TOPIC_NAME, data);
+		publish(KafkaConstants.DEFAULT_TOPIC_NAME,null, data);
 	}
-	
-	
-	private  <T>  void doPublish(String topicName, T data) {
-		ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topicName, data);
 
-		// 
+	/**
+	 * 
+	 * @param <T>
+	 * @param <K>
+	 * @param topicName
+	 * @param key
+	 * @param data
+	 */
+//	private <T, K> void doPublish(String topicName, T data) {
+//		ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topicName, data);
+//
+//		//
+//		future.addCallback(new ListenableFutureCallback<SendResult<String, Object>>() {
+//
+//			@Override
+//			public void onSuccess(SendResult<String, Object> result) {
+//				logger.info("Sent message=[" + data + "] with offset=[" + result.getRecordMetadata().offset() + "]");
+//
+//			}
+//
+//			@Override
+//			public void onFailure(Throwable ex) {
+//				logger.error("Unable to send message=[" + data + "] due to : " + ex.getMessage());
+//
+//			}
+//		});
+//
+//	}
+	
+	
+	private <T, K> void doPublish(String topicName, String key, T data) {
+		ListenableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topicName, key, data);
+
+		//
 		future.addCallback(new ListenableFutureCallback<SendResult<String, Object>>() {
 
 			@Override
