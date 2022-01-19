@@ -38,14 +38,14 @@ public class MessageServiceImpl implements MessageService {
 	@KafkaListener(topics = KafkaConstants.DEFAULT_TOPIC_NAME,groupId = KafkaConstants.DEFAULT_TOPIC_GROUP_ID)
 	public void receiveMessage(Message message) {
 		logger.info(message.toString());
-		
 	}
 	
-	@KafkaListener(topics = KafkaConstants.NOTIFICATION_MESSAGE_TOPIC)
+	@KafkaListener(topics = KafkaConstants.NOTIFICATION_MESSAGE_TOPIC,containerFactory = "kafkaListenerContainerFactory")
 	//@KafkaListener(topics = KafkaConstants.NOTIFICATION_MESSAGE_TOPIC,groupId = KafkaConstants.DEFAULT_TOPIC_GROUP_ID)
-	public void receiveNotifictionMessage(Message message) {
+	public void receiveNotificationMessage(Message message) {
 		logger.info(message.toString());
 		
 	}
+
 
 }

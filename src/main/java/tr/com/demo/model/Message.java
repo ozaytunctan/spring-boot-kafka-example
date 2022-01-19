@@ -48,8 +48,8 @@ public class Message implements Serializable {
 	public String toString() {
 		return new StringBuilder("{")//
 				.append("id:" + this.id)//
-				.append("content:" + this.content)//
-				.append("createdDate:" + this.createdDate).append("}").toString();
+				.append(",content:" + this.content)//
+				.append(",createdDate:" + this.createdDate).append("}").toString();
 	}
 
 }
