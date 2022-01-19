@@ -4,9 +4,9 @@
 
 <a href='https://kafka.apache.org/quickstart'>download</a>
 
-#zookeeper server başlatmak için aşağıdaki komutunu çalıştırın
 
 
+## Zookeeper server başlatmak için aşağıdaki komutunu çalıştırın
 
 windows
 
@@ -15,7 +15,7 @@ windows
 
 ```
 
-#linux
+linux
 
 
 ```
@@ -23,25 +23,25 @@ windows
 
 ```
 
-#Kafka instance başlatmak için 
+## Kafka instance başlatmak için 
 
-#windows
-
-```
-.\bin\windows\kafka-server-start.bat .\config\server.properties (Windows)
+windows
 
 ```
-#linux
+.\bin\windows\kafka-server-start.bat .\config\server.properties 
 
 ```
-.\bin\kafka-server-start.sh .\config\server.properties (linux)
+linux
+
+```
+.\bin\kafka-server-start.sh .\config\server.properties 
 
 ```
 
 
 ## Dependency information
 
-#Aşağıdaki dependecy pom.xml dosyasına ekleyin
+Aşağıdaki dependecy pom.xml dosyasına ekleyin
 
 ```java
 	<!-- Spring kafka dependency -->
@@ -50,11 +50,15 @@ windows
 		<artifactId>spring-kafka</artifactId>
 	</dependency>
 ```
+## Kafka Architecture
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Overview_of_Apache_Kafka.svg/677px-Overview_of_Apache_Kafka.svg.png">
 
-##Kafka configs
+## Kafka configs
+
 Kafka Consumers/Producers configurasyonu için projenizin  application.properties/application.yml file 
 dosyalarını aşağıdaki satırları ekleyiniz.
+
 
 
 ```bash
@@ -80,4 +84,9 @@ spring.kafka.producer.value-serializer=org.springframework.kafka.support.seriali
 spring.kafka.producer.client-id=producer-${random.uuid}
 spring.kafka.consumer.client-id=consumer-${random.uuid}
 
+```
+
+#Author
+```java
+OZAY TUNÇTAN
 ```
