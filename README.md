@@ -11,7 +11,7 @@
 windows
 
 ```
-.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties 
+./bin/windows/zookeeper-server-start.bat ./config/zookeeper.properties 
 
 ```
 
@@ -19,8 +19,7 @@ linux
 
 
 ```
-.\bin\zookeeper-server-start.sh  .\config\zookeeper.properties 
-
+./bin/zookeeper-server-start.sh  ./config/zookeeper.properties
 ```
 
 ## Kafka instance başlatmak için 
@@ -28,13 +27,13 @@ linux
 windows
 
 ```
-.\bin\windows\kafka-server-start.bat .\config\server.properties 
+./bin/windows/kafka-server-start.bat ./config/server.properties 
 
 ```
 linux
 
 ```
-.\bin\kafka-server-start.sh .\config\server.properties 
+./bin/kafka-server-start.sh ./config/server.properties 
 
 ```
 

@@ -3,6 +3,7 @@ package tr.com.demo.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
@@ -15,7 +16,7 @@ import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
-import org.springframework.kafka.core.KafkaAdmin.NewTopics;
+import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
@@ -42,13 +43,25 @@ public class KafkaConfig {
 //	 * Admin Client için
 //	 * @return
 //	 */
-//	@Bean 
-//	public NewTopic notificationTopic() {
-//		return TopicBuilder.name(KafkaConstants.NOTIFICATION_MESSAGE_TOPIC)
-//				.replicas(2)
-//				.partitions(2)
-//				.build();
-//	}
+	
+	
+	
+	@Bean
+	public KafkaAdmin admin() {
+	    Map<String, Object> configs = new HashMap<>();
+	    configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaProperties.getBootstrapServers());
+	    return new KafkaAdmin(configs);
+	}
+	
+	
+	
+	@Bean 
+	public NewTopic notificationTopic() {
+		return TopicBuilder.name(KafkaConstants.NOTIFICATION_MESSAGE_TOPIC)
+				.partitions(2)
+				.replicas(1)
+				.build();
+	}
 	
 	
 	
