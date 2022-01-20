@@ -86,6 +86,24 @@ spring.kafka.consumer.client-id=consumer-${random.uuid}
 
 ```
 
+
+## console consumer/producer
+
+Console üzerinden mesaj göndermek
+ 
+```
+./bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic otunctan-notification-message-topic
+>{"id":656,"content":"sent message content"}
+
+```
+
+Topic consumer log
+ 
+```
+./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic otunctan-notification-message-topic
+
+```
+
 #Author
 ```java
 OZAY TUNÇTAN

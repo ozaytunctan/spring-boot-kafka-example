@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tr.com.demo.model.Message;
-import tr.com.demo.service.MessageService;
+import tr.com.demo.service.NotificationMessageService;
 
 @RestController
-@RequestMapping(path = "/api/v1/message")
-public class MessageController {
+@RequestMapping(path = "/api/v1/notification")
+public class NotificationMessageController {
 	
 	
 	@Autowired
-	private MessageService messageService;
+	private NotificationMessageService messageService;
 	
 	
 	
